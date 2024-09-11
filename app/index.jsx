@@ -4,12 +4,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../constants";
 import { LinearGradient } from 'expo-linear-gradient';
 import CustomButton from '../components/CustomButton'
-import { StatusBar } from "react-native";
+import { StatusBar } from "expo-status-bar";
 
 export default function Index() {
   return (
     <>
-    {/* Fix navigation bar and index header */}
+    <StatusBar style="light" />
+
     <ImageBackground source={images.onboardingBg} 
       style={{flex:1}}
       resizeMode="cover"
@@ -22,11 +23,10 @@ export default function Index() {
         end={{ x: 0.5, y: 1 }}
       />
 
-      <SafeAreaView className="h-full flex-1">
+      <SafeAreaView className="flex-1">
         <ScrollView contentContainerStyle={{height:'100%'}}>
           
-          <View className='h-full rounded-lg shadow-lg w-full justify-center items-center'>
-            
+          <View className='h-[100vh] rounded-lg shadow-lg w-full justify-center items-center'>
             <View className="flex-row justify-center items-center">
               <Image
                 source={images.logoBlue}
@@ -44,19 +44,15 @@ export default function Index() {
             
             <CustomButton
               title="Get Started"
-              handlePress={ () => router.push('./sign-in') }
-              containerStyles="w-[80%] mt-[10%] p-4 bg-[#050505]"
+              handlePress={ () => router.push('./authOptions') }
+              containerStyles="w-[80%] mt-[5%] p-4 bg-[#050505]"
               textStyles="text-white text-[18px] font-pbold"
             />
 
           </View>
         </ScrollView>
-
-        <StatusBar backgroundColor='#161622' style='light'/>
-
       </SafeAreaView>
     </ImageBackground>
-
     </>
   );
 }

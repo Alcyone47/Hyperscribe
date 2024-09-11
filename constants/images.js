@@ -9,5 +9,6 @@ import onboardingBg from "../assets/images/onboardingBackground.png"
 import logoBlue from "../assets/images/logo-blue.png"
 import logoWhite from "../assets/images/logo-white.png"
 import logoBlack from "../assets/images/logo-black.png"
+import googleLogo from "../assets/images/google-logo.png"
 
-export default { profile, thumbnail, cards, path, logo, logoSmall, empty, onboardingBg, logoBlue, logoWhite, logoBlack };
+export default { profile, thumbnail, cards, path, logo, logoSmall, empty, onboardingBg, logoBlue, logoWhite, logoBlack, googleLogo };

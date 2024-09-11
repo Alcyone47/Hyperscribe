@@ -7,7 +7,7 @@ const AuthLayout = () => {
     <>
       <Stack>
         <Stack.Screen
-          name="sign-in"
+          name="authOptions"
           options={{
             headerShown:false
           }}
@@ -19,7 +19,7 @@ const AuthLayout = () => {
           }}
         />
       </Stack>
-      <StatusBar backgroundColor="#161622" style='light' />
+      <StatusBar style='light' />
     </>
   )
 }
