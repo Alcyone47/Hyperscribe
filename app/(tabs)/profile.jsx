@@ -8,7 +8,7 @@ const Profile = () => {
       <StatusBar style='dark'/>
       <SafeAreaView className='flex-1'>
         <ScrollView contentContainerStyle={{height:'100%'}}>
-          <View className=''>
+          <View className=' '>
             
           </View>
         </ScrollView>
