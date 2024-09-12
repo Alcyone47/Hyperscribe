@@ -92,7 +92,7 @@ const authOptions = () => {
                   handleChangeText={(e)=>setForm({...form, email : e })}
                   otherStyles=''
                   keyboardType="email-address"
-                  placeholder='Enter mobile number/email'
+                  placeholder='Enter your email'
                   onFocus={() => setIsFocused(true)}
                   onBlur={() => setIsFocused(false)}
                   />
