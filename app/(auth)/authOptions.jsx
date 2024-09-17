@@ -8,7 +8,7 @@ import { StatusBar } from 'expo-status-bar';
 import CustomButton from '../../components/CustomButton';
 import CustomButtonImage from '../../components/CustomButtonImage';
 import FormField from '../../components/FormField';
-import { supabase } from '../api/supabase'; // Adjust path as needed
+import { supabase } from '../api/supabase';
 
 AppState.addEventListener('change', (state) => {
   if (state === 'active') {

@@ -8,11 +8,11 @@ import { StatusBar } from 'expo-status-bar';
 import CustomButton from '../../components/CustomButton';
 import CustomButtonImage from '../../components/CustomButtonImage';
 import FormField from '../../components/FormField';
-import { supabase } from '../api/supabase'; // Adjust path as needed
+import { supabase } from '../api/supabase';
 
 const Signup = () => {
   const [keyboardVisible, setKeyboardVisible] = useState(false);
-  const [form, setForm] = useState({ username: '', email: '', password: '' });
+  const [form, setForm] = useState({ email: '', password: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
@@ -31,13 +31,24 @@ const Signup = () => {
 
   const signUpWithEmail = async () => {
     setIsSubmitting(true);
-    const { error } = await supabase.auth.signUp({
-      email: form.email,
-      password: form.password,
-    });
-    if (error) Alert.alert('Sign Up Error', error.message);
-    else router.push('/home'); //
-    setIsSubmitting(false);
+    try {
+      const { error, user, data } = await supabase.auth.signUp({
+        email: form.email,
+        password: form.password, 
+        username: form.username
+      });
+
+      if (error) {
+        Alert.alert('Sign Up Error', error.message);
+      } else {
+        Alert.alert('Sign Up Success', `Welcome ${user.email}`);
+        router.push('/home');
+      }
+    } catch (e) {
+      Alert.alert('Sign Up Error', e.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const signUpWithGoogle = async () => {
@@ -49,7 +60,7 @@ const Signup = () => {
 
   return (
     <>
-      <StatusBar style="light" />
+    <StatusBar style="light"/>
 
       <ImageBackground source={images.onboardingBg} style={{ flex: 1 }} resizeMode="cover">
         <LinearGradient

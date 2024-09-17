@@ -6,6 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { supabase } from '../api/supabase';
 import { images } from '../../constants';
 import CustomButton from '../../components/CustomButton';
+import { router } from 'expo-router';
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);
@@ -16,19 +17,16 @@ const Profile = () => {
       try {
         const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
         if (sessionError) throw sessionError;
-
         const userId = sessionData.session?.user?.id;
         if (!userId) {
-          throw new Error('User ID not found');
+          throw new Error('User not found');
         }
-
         const { data: userData, error: userError } = await supabase
           .from('profiles')
           .select('*')
           .eq('id', userId)
           .single();
         if (userError) throw userError;
-
         setProfile(userData);
       } catch (error) {
         Alert.alert('Error', error.message);
@@ -39,6 +37,16 @@ const Profile = () => {
 
     fetchProfile();
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      router.push('/authOptions'); // Navigate to the Login screen
+    } catch (error) {
+      Alert.alert('Logout Error', error.message);
+    }
+  };
 
   if (loading) {
     return (
@@ -52,7 +60,7 @@ const Profile = () => {
     <>
       <StatusBar style="light" />
       <ImageBackground source={images.onboardingBg} className="flex-1" resizeMode="cover">
-      <LinearGradient
+        <LinearGradient
           colors={['rgba(0,0,0,0.8)', 'rgba(0,0,0,0.2)']}
           style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }}
           start={{ x: 0.5, y: 0.4 }}
@@ -85,8 +93,8 @@ const Profile = () => {
                 </View>
                 <View className="flex mt-10 items-center">
                   <CustomButton
-                    title="Edit Profile"
-                    handlePress={() => { /* Navigate to edit profile screen */ }}
+                    title="Log out"
+                    handlePress={handleLogout}
                     containerStyles="w-[80%] mt-4 p-4 bg-black"
                     textStyles="text-white text-lg font-bold"
                   />

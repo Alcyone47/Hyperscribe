@@ -10,19 +10,16 @@ export default function Index() {
   return (
     <>
     <StatusBar style="light" />
-
     <ImageBackground source={images.onboardingBg} 
       style={{flex:1}}
       resizeMode="cover"
     >
-
       <LinearGradient
         colors={['rgba(0,0,0,0.7)', 'rgba(0,0,0,0.1)']}
         style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }} 
         start={{ x: 0.5, y: 0.4 }}  
         end={{ x: 0.5, y: 1 }}
       />
-
       <SafeAreaView className="flex-1">
         <ScrollView contentContainerStyle={{height:'100%'}}>
           
