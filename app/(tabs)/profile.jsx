@@ -82,14 +82,7 @@ const Profile = () => {
               </View>
               <View className="flex-1 p-5 justify-end">
                 <View className="flex items-center">
-                  <View className="bg-white p-5 rounded-lg w-full">
-                    <Text className="text-black text-lg font-bold">Email:</Text>
-                    <Text className="text-black text-base">{profile?.email || 'No email available.'}</Text>
-                  </View>
-                  <View className="mt-5 bg-white p-5 rounded-lg w-full">
-                    <Text className="text-black text-lg font-bold">Username:</Text>
-                    <Text className="text-black text-base">{profile?.username || 'No username available.'}</Text>
-                  </View>
+                  
                 </View>
                 <View className="flex mt-10 items-center">
                   <CustomButton
