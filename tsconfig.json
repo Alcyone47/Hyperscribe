@@ -1,17 +1,10 @@
 {
+  "compilerOptions": {},
   "extends": "expo/tsconfig.base",
-  "compilerOptions": {
-    "strict": true,
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
-  },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "app/_layout.jsx", "app/index.jsx", "app/(tabs)/_layout.jsx", "app/(tabs)/camera.jsx", "app/(tabs)/device.jsx", "app/(tabs)/home.jsx", "app/(tabs)/profile.jsx", "app/(auth)/_layout.jsx", "app/(auth)/sign-in.jsx", "app/(auth)/sign-up.jsx", "app/search/[query].jsx", "app/api/supabase.ts"  ]
+  ]
 }
